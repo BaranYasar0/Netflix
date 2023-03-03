@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\Netflix.Infrastructure.Persistance\Netflix.Infrastructure.Persistance.csproj" />
+  </ItemGroup>
+
 </Project>
