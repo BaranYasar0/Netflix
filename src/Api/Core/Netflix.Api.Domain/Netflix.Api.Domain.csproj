@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Shared\Netflix.Shared\Netflix.Shared.csproj" />
+  </ItemGroup>
+
 </Project>
