@@ -24,11 +24,13 @@ namespace Netflix.Infrastructure.Persistance.EntityConfigurations
 
             builder.HasOne(x => x.User)
                 .WithMany(x => x.MovieCommentVotes)
-                .HasForeignKey(x => x.UserId);
+                .HasForeignKey(x => x.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasOne(x => x.MovieComment)
                 .WithMany(x => x.MovieCommentVotes)
-                .HasForeignKey(x => x.MovieCommentId);
+                .HasForeignKey(x => x.MovieCommentId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
