@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
+using Netflix.Api.Application.Services.Repositories.Interfaces;
 using Netflix.Api.Domain.Entities;
-using Netflix.Infrastructure.Persistance.Repositories.Interfaces;
+using Netflix.Infrastructure.Persistance.Contexts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,13 +10,13 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Netflix.Infrastructure.Persistance.Repositories
+namespace Netflix.Infrastructure.Persistance.Repositories.Common
 {
     public class BaseRepository<T> : IRepository<T> where T : BaseEntity
     {
-        protected DbContext _context;
+        protected BaseDbContext _context;
 
-        public BaseRepository(DbContext context)
+        public BaseRepository(BaseDbContext context)
         {
             _context = context;
         }
@@ -40,7 +41,7 @@ namespace Netflix.Infrastructure.Persistance.Repositories
             if (_context.Entry(entity).State == EntityState.Detached)
                 dbSet.Attach(entity);
 
-             dbSet.Remove(entity);
+            dbSet.Remove(entity);
             await _context.SaveChangesAsync();
             return entity;
         }
@@ -59,7 +60,7 @@ namespace Netflix.Infrastructure.Persistance.Repositories
 
 
         //public IQueryable<T> AsQueryable() => dbSet.AsQueryable();
-    
+
         public async Task<T> GetAsync(Expression<Func<T, bool>> predicate, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, bool disaableTracking = true, CancellationToken cancellationToken = default)
         {
             IQueryable<T> query = dbSet.AsQueryable();
@@ -69,7 +70,7 @@ namespace Netflix.Infrastructure.Persistance.Repositories
             if (include != null)
                 query = include(query);
 
-           var entity=await query.Where(predicate).FirstOrDefaultAsync();
+            var entity = await query.Where(predicate).FirstOrDefaultAsync();
 
             return entity;
 
@@ -78,16 +79,16 @@ namespace Netflix.Infrastructure.Persistance.Repositories
 
         public async Task<List<T>> GetListAsync(Expression<Func<T, bool>>? predicate = null, Func<IQueryable<T>, IIncludableQueryable<T, object>>? include = null, Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, bool disableTracking = true, CancellationToken cancellationToken = default)
         {
-        IQueryable<T> query=dbSet.AsQueryable();
+            IQueryable<T> query = dbSet.AsQueryable();
 
             if (!disableTracking)
                 query.AsNoTracking();
 
-            if (include !=null)
+            if (include != null)
                 query = include(query);
 
-            if(predicate!=null)
-                query=query.Where(predicate);
+            if (predicate != null)
+                query = query.Where(predicate);
 
             if (orderBy != null)
                 orderBy(query);

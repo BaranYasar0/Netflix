@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.14">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -15,11 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Core\Netflix.Api.Application\Netflix.Api.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Netflix.Infrastructure.Infrastructure\Netflix.Infrastructure.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\Netflix.Infrastructure.Persistance\Netflix.Infrastructure.Persistance.csproj" />
   </ItemGroup>
 
 </Project>

@@ -27,9 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Netflix.Api.WebAPI", "src\A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projections", "Projections", "{164DCA7E-CF16-46F9-8472-20B037CA762E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netflix.Shared", "src\Shared\Netflix.Shared\Netflix.Shared.csproj", "{0B1FB4FB-B58A-40B5-A6FB-995440B1CF58}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Netflix.Shared", "src\Shared\Netflix.Shared\Netflix.Shared.csproj", "{0B1FB4FB-B58A-40B5-A6FB-995440B1CF58}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netflix.Infrastructure.Infrastructure", "src\Api\Infrastructure\Netflix.Infrastructure.Infrastructure\Netflix.Infrastructure.Infrastructure.csproj", "{6308B829-19ED-416B-9790-5AD2E4C8FB31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Netflix.Infrastructure.Infrastructure", "src\Api\Infrastructure\Netflix.Infrastructure.Infrastructure\Netflix.Infrastructure.Infrastructure.csproj", "{6308B829-19ED-416B-9790-5AD2E4C8FB31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Netlflix.Client.MVC", "src\Clients\Netlflix.Client.MVC\Netlflix.Client.MVC.csproj", "{8E7C3BAC-A7A5-4FE9-83E6-36F8AC2D531D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,6 +63,10 @@ Global
 		{6308B829-19ED-416B-9790-5AD2E4C8FB31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6308B829-19ED-416B-9790-5AD2E4C8FB31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6308B829-19ED-416B-9790-5AD2E4C8FB31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E7C3BAC-A7A5-4FE9-83E6-36F8AC2D531D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E7C3BAC-A7A5-4FE9-83E6-36F8AC2D531D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E7C3BAC-A7A5-4FE9-83E6-36F8AC2D531D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E7C3BAC-A7A5-4FE9-83E6-36F8AC2D531D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +85,7 @@ Global
 		{164DCA7E-CF16-46F9-8472-20B037CA762E} = {BC9EA7EB-76A9-4B45-9753-25A70FDE2F70}
 		{0B1FB4FB-B58A-40B5-A6FB-995440B1CF58} = {6E89383E-788F-458C-BD4D-F25B12788481}
 		{6308B829-19ED-416B-9790-5AD2E4C8FB31} = {3CFA1609-68BC-496F-910A-FD2DE870610C}
+		{8E7C3BAC-A7A5-4FE9-83E6-36F8AC2D531D} = {1F461EE1-A6E8-4D15-8EA0-7F9C2DE9AF98}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CB0D550F-D3D4-4F32-A22D-CDEBB8AA4148}

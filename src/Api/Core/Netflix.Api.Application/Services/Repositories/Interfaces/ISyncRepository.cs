@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Netflix.Infrastructure.Persistance.Repositories.Interfaces
+namespace Netflix.Api.Application.Services.Repositories.Interfaces
 {
     public interface ISyncRepository<T> where T : BaseEntity
     {

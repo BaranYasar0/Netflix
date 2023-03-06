@@ -7,18 +7,18 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Netflix.Infrastructure.Persistance.Repositories.Interfaces
+namespace Netflix.Api.Application.Services.Repositories.Interfaces
 {
     public interface IAsyncRepository<TEntity> where TEntity : BaseEntity
     {
         Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate,
-            Func<IQueryable<TEntity>,IIncludableQueryable<TEntity,object>>? include=null,
-            bool disaableTracking=true,
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+            bool disaableTracking = true,
             CancellationToken cancellationToken = default);
-        Task<List<TEntity>> GetListAsync(Expression<Func<TEntity, bool>>? predicate=null,
-            Func<IQueryable<TEntity>,IIncludableQueryable<TEntity,object>>? include=null,
-            Func<IQueryable<TEntity>,IOrderedQueryable<TEntity>>? orderBy=null,
-            bool disableTracking=true,
+        Task<List<TEntity>> GetListAsync(Expression<Func<TEntity, bool>>? predicate = null,
+            Func<IQueryable<TEntity>, IIncludableQueryable<TEntity, object>>? include = null,
+            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>>? orderBy = null,
+            bool disableTracking = true,
             CancellationToken cancellationToken = default);
 
         Task<TEntity> AddAsync(TEntity entity);

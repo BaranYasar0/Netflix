@@ -14,6 +14,8 @@ namespace Netflix.Api.Domain.Entities
         public int UserId { get; set; }
         public Movie Movie { get; set; }
         public User User { get; set; }
-        public ICollection<MovieCommentVote> MovieCommentVotes { get; set; }
+        public ICollection<MovieCommentVote>? MovieCommentVotes { get; set; }
+
+
     }
 }

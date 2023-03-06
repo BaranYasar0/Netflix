@@ -24,8 +24,7 @@ namespace Netflix.Infrastructure.Persistance.EntityConfigurations
 
             builder.HasOne(x => x.Movie)
                 .WithMany(x => x.MovieVotes)
-                .HasForeignKey(x => x.MovieId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasForeignKey(x => x.MovieId);
 
             builder.HasOne(x => x.User)
                .WithMany(x => x.MovieVotes)

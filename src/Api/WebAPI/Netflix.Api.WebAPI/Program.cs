@@ -1,4 +1,7 @@
+using Netflix.Api.Application.Services;
+using Netflix.Api.Application.Services.Repositories;
 using Netflix.Infrastructure.Persistance;
+using Netflix.Infrastructure.Persistance.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddPersistanceServices(builder.Configuration);
+
+builder.Services.AddApplicationServices();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Core\Netflix.Api.Application\Netflix.Api.Application.csproj" />
+  </ItemGroup>
+
 </Project>

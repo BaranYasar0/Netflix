@@ -9,7 +9,11 @@ namespace Netflix.Api.Domain.Entities
     public class Category:BaseEntity
     {
         public string Name { get; set; }
-        public ICollection<Movie> Movies { get; set; }
+        public ICollection<Movie>? Movies { get; set; }
 
+        public Category(string name)
+        {
+            Movies=new HashSet<Movie>();
+        }
     }
 }

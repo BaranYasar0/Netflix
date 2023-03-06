@@ -15,5 +15,10 @@ namespace Netflix.Api.Domain.Entities
         public int MovieCommentId { get; set; }
         public User User { get; set; }
         public MovieComment MovieComment { get; set; }
+
+        public MovieCommentVote()
+        {
+            MovieComment = new();
+        }
     }
 }
