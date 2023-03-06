@@ -12,7 +12,7 @@ namespace Netflix.Api.Application.Features.Rules.Common
         {
             foreach (var model in models)
             {
-                if (model == null)
+                if (model==null)
                     throw new ArgumentNullException(nameof(model));
             }
              return true;

@@ -1,6 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using MediatR;
+using Microsoft.Extensions.DependencyInjection;
+using Netflix.Api.Application.Features.Commands.Movies.CreateMovie;
 using Netflix.Api.Application.Features.Profiles.Movie;
 using Netflix.Api.Application.Features.Rules;
+using Netflix.Api.Application.Pipelines;
 using Netflix.Api.Application.Services.Repositories;
 using System;
 using System.Collections.Generic;
@@ -17,9 +21,15 @@ namespace Netflix.Api.Application.Services
         {
             services.AddMediatR(cfg=>cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
-
+            
+            services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehaviour<,>));
+            
             services.AddScoped<MovieBusinessRules>();
             services.AddScoped<MovieProfile>();
+
+            
+
 
             return services;
         }

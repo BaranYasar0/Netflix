@@ -1,4 +1,7 @@
 ﻿using AutoMapper;
+using FluentValidation;
+using FluentValidation.AspNetCore;
+using FluentValidation.Results;
 using MediatR;
 using Netflix.Api.Application.Features.Dtos.Movie;
 using Netflix.Api.Application.Features.Rules;
@@ -25,22 +28,25 @@ namespace Netflix.Api.Application.Features.Commands.Movies.CreateMovie
             private readonly IMapper _mapper;
             private readonly IMovieRepository _movieRepository;
             private readonly MovieBusinessRules _businessRules;
+            private readonly IValidator<CreateMovieCommand> _validator;
 
-            public CreateMovieCommandHandler(IMapper mapper, IMovieRepository movieRepository, MovieBusinessRules businessRules)
+            public CreateMovieCommandHandler(IMapper mapper, IMovieRepository movieRepository, MovieBusinessRules businessRules, IValidator<CreateMovieCommand> validator)
             {
                 _mapper = mapper;
                 _movieRepository = movieRepository;
                 _businessRules = businessRules;
+                _validator = validator;
             }
 
             public async Task<CreatedMovieDto> Handle(CreateMovieCommand request, CancellationToken cancellationToken)
             {
-                await ModelNullCheck.IsModelNullOrNot(request);
                 await _businessRules.IsMovieNameExists(request.Name);
 
                 Movie mappedMovie = _mapper.Map<Movie>(request);
 
-                Movie createdMovie= await _movieRepository.AddAsync(mappedMovie);
+                await _businessRules.AreMoviesNull(mappedMovie);
+
+                Movie createdMovie = await _movieRepository.AddAsync(mappedMovie);
                 CreatedMovieDto createdMovieDto = _mapper.Map<CreatedMovieDto>(createdMovie);
                 return createdMovieDto;
 
