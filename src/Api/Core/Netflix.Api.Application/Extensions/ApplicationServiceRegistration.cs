@@ -13,22 +13,27 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Netflix.Api.Application.Services
+namespace Netflix.Api.Application.Extensions
 {
     public static class ApplicationServiceRegistration
     {
-    public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
-            services.AddMediatR(cfg=>cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            services.AddHttpContextAccessor();
+            
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            
+
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehaviour<,>));
             
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehaviour<,>));
+            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehaviour<,>));
+
+
             services.AddScoped<MovieBusinessRules>();
             services.AddScoped<MovieProfile>();
 
-            
+
 
 
             return services;

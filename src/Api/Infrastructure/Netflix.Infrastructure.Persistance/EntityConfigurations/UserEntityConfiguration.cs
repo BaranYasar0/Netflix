@@ -17,13 +17,15 @@ namespace Netflix.Infrastructure.Persistance.EntityConfigurations
                 .HasColumnName("E-mail");
 
             builder.Property(x => x.FirstName)
-                .HasColumnName("E-FirstName");
+                .HasColumnName("FirstName");
 
             builder.Property(x => x.LastName)
-                .HasColumnName("E-LastName");
+                .HasColumnName("LastName");
 
             builder.Property(x => x.ContactNumber)
-                .HasColumnName("E-ContactNumber");
+                .HasColumnName("ContactNumber");
+
+            builder.HasMany(x => x.UserOperationClaims);
 
         }
     }

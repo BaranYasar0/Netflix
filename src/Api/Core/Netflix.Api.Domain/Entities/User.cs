@@ -11,7 +11,12 @@ namespace Netflix.Api.Domain.Entities
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
-        public string ContactNumber { get; set; }
+        public string? ContactNumber { get; set; }
+        public byte[] PasswordHash { get; set; }
+        public byte[] PasswordSalt { get; set; }
+        public bool Status { get; set; } = true;
+
+        public ICollection<UserOperationClaim> UserOperationClaims { get; set; }
 
         public ICollection<MovieFavourite> MovieFavourites { get; set; }
         public ICollection<MovieVote> MovieVotes { get; set; }

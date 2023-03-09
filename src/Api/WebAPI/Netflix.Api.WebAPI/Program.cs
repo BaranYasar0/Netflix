@@ -1,4 +1,4 @@
-using Netflix.Api.Application.Services;
+using Netflix.Api.Application.Extensions;
 using Netflix.Api.Application.Services.Repositories;
 using Netflix.Infrastructure.Persistance;
 using Netflix.Infrastructure.Persistance.Repositories;
